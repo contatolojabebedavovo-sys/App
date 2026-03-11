@@ -20,6 +20,14 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Create mipmap directories and icon
+        run: |
+          for dir in mipmap-mdpi mipmap-hdpi mipmap-xhdpi mipmap-xxhdpi mipmap-xxxhdpi; do
+            mkdir -p app/src/main/res/$dir
+            cp ic_launcher.png app/src/main/res/$dir/ic_launcher.png
+            cp ic_launcher.png app/src/main/res/$dir/ic_launcher_round.png
+          done
+
       - name: Install Gradle 8.2
         run: |
           wget https://services.gradle.org/distributions/gradle-8.2-bin.zip
